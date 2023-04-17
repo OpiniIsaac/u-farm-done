@@ -1,8 +1,8 @@
 function showPage(pageName) {
     var iframe = document.getElementById("page-content");
     switch (pageName) {
-      case "aoRegistrartion":
-        iframe.src = "aoRegistrartion";
+      case "aoRegistration":
+        iframe.src = "aoRegistration";
         break;
       case "registeredFarmerOne":
         iframe.src = "registeredFarmerOne";

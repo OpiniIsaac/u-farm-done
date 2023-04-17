@@ -49,7 +49,7 @@ catch(err){
 
 // updating famer one activities
 
-router.get("/edit_FamerOne/:id", async(req,res)=>{
+router.get("/edit_FarmerOne/:id", async(req,res)=>{
   try{
       const item= await AoRegister.findOne({_id:req.params.id});
       res.render("appointFarmerOne", {farmer:item});
@@ -61,9 +61,9 @@ router.get("/edit_FamerOne/:id", async(req,res)=>{
 });
 
 
-router.post("/edit_FamerOne", async(req,res)=>{
+router.post("/edit_FarmerOne", async(req,res)=>{
   try{
-      await AoRegister.findOneAndUpdate({_id:req.params.id},req.body)
+      await AoRegister.findOneAndUpdate({_id:req.query.id},req.body)
       res.redirect("/registeredFarmerOne")
   }
   catch(err){
