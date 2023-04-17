@@ -23,3 +23,6 @@ button.addEventListener('click', () => {
   document.getElementById("uniqueId").value = uniqueNumber;
 
 });
+
+const currentDate = new Date().toISOString().substr(0, 10);
+document.getElementById("currentDate").value = currentDate;

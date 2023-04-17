@@ -71,9 +71,8 @@ form#regForm(name='register' action ='/register' method ='post'
     textarea#directions(name='directions' placeholder='Enter your directions')
     small#directionsError
     br
-    label(for='dateOfRegistration') Date of Registration:
-    input#dateOfRegistration(type='date' name='dateOfRegistration')
-    small#dateOfRegistrationError
+   
+    input#currentDate(type="hidden" name="dateOfRegistration" value="dateOfRegistration")
     br
     label(for='periodOfStay') Period of Stay in Ward (in years):
     input#periodOfStay(type='number' name='periodOfStay' placeholder='Enter your period of stay in ward')
