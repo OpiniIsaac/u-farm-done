@@ -1,5 +1,5 @@
-const Validate = (event) => {
-  let error = 0;
+const Validate = () => {
+  // let error = 0;
   // pick inputs
   let fullName = document.getElementById("fullName");
   let nin = document.getElementById("nin");
@@ -45,7 +45,7 @@ const Validate = (event) => {
     fullNameError.innerHTML = "Please full name can not be empty";
     fullNameError.style =
       "color: red; font-size:11px; font-family:Arial, Helvetica, sans-serif;";
-    error++;
+    
     return false;
   }
   // validating first name for minimum length
@@ -54,7 +54,7 @@ const Validate = (event) => {
     fullNameError.innerHTML = "Please full name must be atleast 5 letters";
     fullNameError.style =
       "color: red; font-size:11px; font-family:Arial, Helvetica, sans-serif;";
-    error++;
+    
     return false;
   }
   // validating first name for maximum length
@@ -63,7 +63,7 @@ const Validate = (event) => {
     fullNameError.innerHTML = "Please full  name must be less than 50 letters";
     fullNameError.style =
       "color: red; font-size:11px; font-family:Arial, Helvetica, sans-serif;";
-    error++;
+    
     return false;
   } else {
     fullName.style.border = "1px solid green";
@@ -71,57 +71,32 @@ const Validate = (event) => {
   }
 
   // validating nin input
-  // if (nin.value == "") {
-  //   nin.style.border = "1px solid red";
-  //   ninError.innerHTML = "Please nin can not be empty";
-  //   ninError.style =
-  //     "color: red; font-size:11px; font-family:Arial, Helvetica, sans-serif;";
-  //   error++;
-  //   return false;
-  // }
-  // // validating first name for minimum length
-  // else if (nin.value.length < 5) {
-  //   nin.style.border = "1px solid red";
-  //   ninError.innerHTML = "Please nin must be atleast 3 letters";
-  //   ninError.style =
-  //     "color: red; font-size:11px; font-family:Arial, Helvetica, sans-serif;";
-  //   error++;
-  //   return false;
-  // }
-  if (nin.validity.valueMissing) {
+
+  if (nin.value == '') {
     nin.style.border = "1px solid red";
 
     ninError.innerHTML = "NIN is required.";
     ninError.style =
       "color: red; font-size:11px; font-family:Arial, Helvetica, sans-serif;";
-    error++;
+    
     return false;
-  } else if (!ninInput.value.match(/^[A-Z]{2}\d{8}[A-Z]$/)) {
+  } else if (!nin.value.match(/^[A-Z]{2}\d{8}[A-Z]$/)) {
     nin.style.border = "1px solid red";
 
     ninError.innerHTML =
       "Please enter a valid Ugandan National Identification Number (e.g. CM12345678D).";
     ninError.style =
       "color: red; font-size:11px; font-family:Arial, Helvetica, sans-serif;";
-    error++;
+    
     return false;
   } else {
+    nin.style.border = "1px solid green";
+
     ninError.innerHTML = "";
+
   }
 
-  // // validating first name for maximum length
-  // else if (nin.value.length > 50) {
-  //   nin.style.border = "1px solid red";
-  //   ninError.innerHTML =
-  //     "Please nin must be less than 50 letters";
-  //   ninError.style =
-  //     "color: red; font-size:11px; font-family:Arial, Helvetica, sans-serif;";
-  //   error++;
-  //   return false;
-  // } else {
-  //   nin.style.border = "1px solid green";
-  //   ninError.innerHTML = "";
-  // }
+
   //validation for phone number
   if (phoneNumber.value == "") {
     phoneNumber.style.border = "1px solid red";
@@ -129,7 +104,7 @@ const Validate = (event) => {
     phoneNumberError.innerHTML = "Phone number is required.";
     phoneNumberError.style =
       "color: red; font-size:11px; font-family:Arial, Helvetica, sans-serif;";
-    error++;
+    
     return false;
   } else if (!phoneNumber.value.match(/^(\+256|0)\d{9}$/)) {
     phoneNumber.style.border = "1px solid red";
@@ -138,47 +113,74 @@ const Validate = (event) => {
       "Please enter a valid Ugandan phone number (e.g. +256771234567 or 0777123456).";
     phoneNumberError.style =
       "color: red; font-size:11px; font-family:Arial, Helvetica, sans-serif;";
-    error++;
+    
     return false;
   } else {
+    phoneNumber.style.border = "1px solid green";
+
     phoneNumberError.innerHTML = "";
+
   }
 
   // gender validations
   if (female.checked == false && male.checked == false) {
-    genderError.textContent = "Please select gender";
+    genderError.innerHTML = "Please select gender";
     genderError.style =
       "color: red; font-size:11px; font-family:Arial, Helvetica, sans-serif;";
-    error++;
+    
     return false;
   } else {
-    genderError.textContent = "";
+    phoneNumber.style.border = "1px solid green";
+
+    genderError.innerHTML = "";
   }
 
   if (dateOfBirth.value == "") {
-    dateOfBirthError.textContent = "please enter date of birth";
+    dateOfBirthError.innerHTML = "please enter date of birth";
     dateOfBirthError.style =
       "color: red; font-size:11px; font-family:Arial, Helvetica, sans-serif;";
     return false;
   } else {
-    dateOfBirthError.textContent = "";
-  }
-  if (residenceType.value == "") {
-    residenceTypeError.textContent = "please enter type of residence";
-    residenceTypeError.style =
-      "color: red; font-size:11px; font-family:Arial, Helvetica, sans-serif;";
-    return false;
-  } else {
-    residenceTypeError.textContent = "";
-    residenceType.style.border = "1px solid green";
+    dateOfBirthError.innerHTML = "";
   }
 
+  
+  if (residenceType.value == "") {
+    residenceType.style.border = "1px solid red";
+    residenceTypeError.innerHTML = "Please residenceType name can not be empty";
+    residenceTypeError.style =
+      "color: red; font-size:11px; font-family:Arial, Helvetica, sans-serif;";
+    
+    return false;
+  }
+  // validating first name for minimum length
+  else if (residenceType.value.length < 3) {
+    residenceType.style.border = "1px solid red";
+    residenceTypeError.innerHTML = "Please the residenceType name must be atleast 3 letters";
+    residenceTypeError.style =
+      "color: red; font-size:11px; font-family:Arial, Helvetica, sans-serif;";
+    
+    return false;
+  }
+  // validating first name for maximum length
+  else if (residenceType.value.length > 50) {
+    residenceType.style.border = "1px solid red";
+    residenceTypeError.innerHTML = "Please the residenceType  name must be less than 50 letters";
+    residenceTypeError.style =
+      "color: red; font-size:11px; font-family:Arial, Helvetica, sans-serif;";
+    
+    return false;
+  } else {
+    residenceType.style.border = "1px solid green";
+    residenceTypeError.innerHTML = "";
+  }
+  
   if (ward.value == "") {
     ward.style.border = "1px solid red";
     wardError.innerHTML = "Please ward name can not be empty";
     wardError.style =
       "color: red; font-size:11px; font-family:Arial, Helvetica, sans-serif;";
-    error++;
+    
     return false;
   }
   // validating first name for minimum length
@@ -187,7 +189,7 @@ const Validate = (event) => {
     wardError.innerHTML = "Please the ward name must be atleast 3 letters";
     wardError.style =
       "color: red; font-size:11px; font-family:Arial, Helvetica, sans-serif;";
-    error++;
+    
     return false;
   }
   // validating first name for maximum length
@@ -196,7 +198,7 @@ const Validate = (event) => {
     wardError.innerHTML = "Please the ward  name must be less than 50 letters";
     wardError.style =
       "color: red; font-size:11px; font-family:Arial, Helvetica, sans-serif;";
-    error++;
+    
     return false;
   } else {
     ward.style.border = "1px solid green";
@@ -209,7 +211,7 @@ const Validate = (event) => {
   const foregex = /^FO-([0-9]{3})+$/;
   if (uniqueId.value == "") {
     uniqueId.style.border = "1px solid red";
-    uniqueIdError.textContent = "Unique number is required";
+    uniqueIdError.innerHTML = "Unique number is required";
     uniqueIdError.style =
       "color: red; font-size:11px; font-family:Arial, Helvetica, sans-serif;";
     return false;
@@ -221,54 +223,52 @@ const Validate = (event) => {
     )
   ) {
     uniqueId.style.border = "1px solid red";
-    uniqueIdError.textContent = "Unique number must follow this formart AO-000";
+    uniqueIdError.innerHTML = "Unique number must follow this formart AO-000";
     uniqueIdError.style =
       "color: red; font-size:11px; font-family:Arial, Helvetica, sans-serif;";
     return false;
   } else {
     uniqueId.style.border = "1px solid green";
-    uniqueIdError.textContent = "";
+    uniqueIdError.innerHTML = "";
   }
 
   if (activities.value == "") {
-    activitiesError.textContent = "please enter activities";
+    activitiesError.innerHTML = "please enter activities";
     activitiesError.style =
       "color: red; font-size:11px; font-family:Arial, Helvetica, sans-serif;";
     return false;
   } else {
-    activitiesError.textContent = "";
+    activitiesError.innerHTML = "";
     activities.style.border = "1px solid green";
   }
   if (directions.value == "") {
-    directionsError.textContent = "please enter directions";
+    directionsError.innerHTML = "please enter directions";
     directionsError.style =
       "color: red; font-size:11px; font-family:Arial, Helvetica, sans-serif;";
     return false;
   } else {
-    directionsError.textContent = "";
+    directionsError.innerHTML = "";
     directions.style.border = "1px solid green";
   }
 
   if (dateOfRegistration.value == "") {
-    dateOfRegistrationError.textContent = "please enter date of registration";
+    dateOfRegistrationError.innerHTML = "please enter date of registration";
     dateOfRegistrationError.style =
       "color: red; font-size:11px; font-family:Arial, Helvetica, sans-serif;";
     return false;
   } else {
-    dateOfRegistrationError.textContent = "";
+    dateOfRegistrationError.innerHTML = "";
   }
 
-  if (periodOfStay.value < 10) {
-    periodOfStayError.textContent =
+  if (periodOfStay.value <= 10) {
+    periodOfStayError.innerHTML =
       "the farmer should have stayed here for more than 10years";
     periodOfStayError.style =
       "color: red; font-size:11px; font-family:Arial, Helvetica, sans-serif;";
     return false;
   } else {
-    periodOfStayError.textContent = "";
+    periodOfStayError.innerHTML = "";
   }
 
-  if (error > 0) {
-    event.preventDefault();
-  }
+
 };

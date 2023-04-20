@@ -10,6 +10,10 @@ const UploadScheme = new mongoose.Schema({
         type:String,
         trim:true
     },
+    productimage :{
+        type:String,
+        trim:true
+    },
     
    date:{
         type:String,

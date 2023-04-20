@@ -39,6 +39,9 @@ passport.serializeUser(authSignUp.serializeUser());
 passport.deserializeUser(authSignUp.deserializeUser());
 
 
+// malter middlware 
+app.use(express.static(path.join(__dirname , "public/products")))
+
 app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({ extended: true }));

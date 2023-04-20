@@ -68,15 +68,8 @@ button[type="submit"]:hover {
   background-color:  #45a049;
 }
 
-/* Responsive styles */
-@media (max-width: 768px) {
-  main {
-    padding: 10px;
-  }
-
-  input[type="text"],
-  input[type="password"],
-  button[type="submit"] {
-    font-size: 14px;
-  }
+input[type="radio"],
+input[type="checkbox"] {
+  margin-right: 10px;
+  margin-bottom: 5px;
 }

@@ -7,11 +7,15 @@ head
   link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css')
 .container
   h1 Upload Produce and Products
-  form(name='register' action ='/uploadProducts' method ='post')
+  form(name='register' action ='/uploadProducts' method ='post' enctype="multipart/form-data")
     .form-group
       label(for='fullName') Name:
       input#fullName.form-control(type='text' name='fullName')
       small#fullNameError
+    .form-group
+      label(for='productimage') Upload Image :
+      input#productimage.form-control(type='file' name='productimage')
+      small#productimageError 
     .form-group
       label(for='ward') Ward Name:
       input#ward.form-control(type='text' name='ward')

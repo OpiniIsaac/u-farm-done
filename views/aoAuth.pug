@@ -11,9 +11,14 @@ main
       label(for='fullName') Full Name:
       input#fullName(type='text' name='fullName' placeholder='Enter your full name')
       small#fullNameError
-     
-      label(for='ward') Ward:
-      input#ward(type='text' name='ward' placeholder='Enter your ward')
+   
+      label(for='ward') Ward Represented:
+        select#ward(name='ward' type='text')
+          option(value='') --Select--
+          option(value='Ward A' name='ward' ) Ward A
+          option(value='Ward b' name='ward' ) Ward B
+          option(value='Ward c' name='ward') Ward C
+          option(value='Ward D' name='ward') Ward D
       small#wardError
     fieldset
       legend Authentication Details

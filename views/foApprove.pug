@@ -5,48 +5,23 @@ head
 header
   h1 Approve Produce and Products
 main
-  .card
-    h2 Farmer&apos;s Name
-    p
-      strong Product Name:
-      |  Name of product
-    p
-      strong Product Description:
-      |  A brief description of the product
-    p
-      strong Quantity:
-      |  10 kg
-    p
-      strong Price:
-      |  $20
-    button Approve
-  .card
-    h2 Farmer&apos;s Name
-    p
-      strong Product Name:
-      |  Name of product
-    p
-      strong Product Description:
-      |  A brief description of the product
-    p
-      strong Quantity:
-      |  5 kg
-    p
-      strong Price:
-      |  $10
-    button Approve
-  .card
-    h2 Farmer&apos;s Name
-    p
-      strong Product Name:
-      |  Name of product
-    p
-      strong Product Description:
-      |  A brief description of the product
-    p
-      strong Quantity:
-      |  3 liters
-    p
-      strong Price:
-      |  $5
-    button Approve
+  
+   .card
+     if products.length 
+      each  product in products 
+          h2 #{product.fullName}
+          p
+            strong #{product.ward}:
+            |  Name of product
+          p
+            strong Product Description:
+            |  #{product.ward}       
+            strong Quantity:
+            |  #{product.quantity}
+          p
+            strong Price:
+            |  $20
+          //- img(src="#{product.productimage}", alt="") 
+          img(src=product.productimage, alt="image to be uploaded") 
+          button Approve
+      

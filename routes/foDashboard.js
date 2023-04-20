@@ -2,15 +2,37 @@ const express = require('express');
 const router = express.Router();
 
 const FoRegister = require('../models/foRegistrationForm')
+
+const UploadProducts = require('../models/upload')
+
 router.get('/foDasboard', (req, res)=> {
   res.render('foDash');
 });
+
+
 router.get('/foRegistrartion', (req, res)=> {
   res.render('foRegistrartion');
 });
-router.get('/foApprove', (req, res)=> {
-  res.render('foApprove');
+
+
+
+router.get('/foApprove', async(req, res)=> {
+
+try{
+  const data = await UploadProducts.find()
+  console.log(data)
+
+  res.render('foApprove',{products:data});
+}catch(err){
+  console.log(err)
+}
+
 });
+
+
+
+
+
 router.get('/foAuth', (req, res)=> {
   res.render('foAuth');
 });

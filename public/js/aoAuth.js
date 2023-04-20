@@ -1,6 +1,6 @@
 
-const Validate = (event) => {
-    let error = 0
+const Validate = () => {
+   
 
 
 
@@ -26,13 +26,14 @@ let wardError= document.getElementById('wardError')
 let usernameError= document.getElementById('usernameError')
 let passwordError= document.getElementById('passwordError')
 let confirmPasswordError= document.getElementById('confirmPasswordError')
+
+
 // validating first name input emptiness
 if (fullName.value == "") {
     fullName.style.border = "1px solid red";
     fullNameError.innerHTML = "Please farmer one name can not be empty";
     fullNameError.style =
       "color: red; font-size:11px; font-family:Arial, Helvetica, sans-serif;";
-    error++;
     return false;
   }
   // validating first name for minimum length
@@ -42,7 +43,6 @@ if (fullName.value == "") {
       "Please the farmer one name must be atleast 3 letters";
     fullNameError.style =
       "color: red; font-size:11px; font-family:Arial, Helvetica, sans-serif;";
-    error++;
     return false;
   }
   // validating first name for maximum length
@@ -52,7 +52,6 @@ if (fullName.value == "") {
       "Please the farmer one  name must be less than 11 letters";
     fullNameError.style =
       "color: red; font-size:11px; font-family:Arial, Helvetica, sans-serif;";
-    error++;
     return false;
   } else {
     fullName.style.border = "1px solid green";
@@ -64,7 +63,6 @@ if (fullName.value == "") {
     wardError.innerHTML = "Please ward name can not be empty";
     wardError.style =
       "color: red; font-size:11px; font-family:Arial, Helvetica, sans-serif;";
-    error++;
     return false;
   }
   // validating first name for minimum length
@@ -73,7 +71,6 @@ if (fullName.value == "") {
     wardError.innerHTML = "Please the ward name must be atleast 3 letters";
     wardError.style =
       "color: red; font-size:11px; font-family:Arial, Helvetica, sans-serif;";
-    error++;
     return false;
   }
   // validating first name for maximum length
@@ -82,11 +79,35 @@ if (fullName.value == "") {
     wardError.innerHTML = "Please the ward  name must be less than 50 letters";
     wardError.style =
       "color: red; font-size:11px; font-family:Arial, Helvetica, sans-serif;";
-    error++;
     return false;
   } else {
     ward.style.border = "1px solid green";
     wardError.innerHTML = "";
+  }
+  const unregex = /^AO-([0-9]{3})+$/;
+  const ufregex = /^UF-([0-9]{3})+$/;
+  const foregex = /^FO-([0-9]{3})+$/;
+  if (uniqueId.value == "") {
+    uniqueId.style.border = "1px solid red";
+    uniqueIdError.innerHTML = "Unique number is required";
+    uniqueIdError.style =
+      "color: red; font-size:11px; font-family:Arial, Helvetica, sans-serif;";
+    return false;
+  } else if (
+    !(
+      uniqueId.value.match(unregex) ||
+      uniqueId.value.match(ufregex) ||
+      uniqueId.value.match(foregex)
+    )
+  ) {
+    uniqueId.style.border = "1px solid red";
+    uniqueIdError.innerHTML = "Unique number must follow this formart AO-000";
+    uniqueIdError.style =
+      "color: red; font-size:11px; font-family:Arial, Helvetica, sans-serif;";
+    return false;
+  } else {
+    uniqueId.style.border = "1px solid green";
+    uniqueIdError.innerHTML = "";
   }
 
   if (username.value == "") {
@@ -94,7 +115,6 @@ if (fullName.value == "") {
     usernameError.innerHTML = "Please username name can not be empty";
     usernameError.style =
       "color: red; font-size:11px; font-family:Arial, Helvetica, sans-serif;";
-    error++;
     return false;
   }
   // validating first name for minimum length
@@ -103,7 +123,6 @@ if (fullName.value == "") {
     usernameError.innerHTML = "Please the username name must be atleast 3 letters";
     usernameError.style =
       "color: red; font-size:11px; font-family:Arial, Helvetica, sans-serif;";
-    error++;
     return false;
   }
   // validating first name for maximum length
@@ -112,7 +131,6 @@ if (fullName.value == "") {
     usernameError.innerHTML = "Please the username  name must be less than 50 letters";
     usernameError.style =
       "color: red; font-size:11px; font-family:Arial, Helvetica, sans-serif;";
-    error++;
     return false;
   } else {
     username.style.border = "1px solid green";
@@ -124,7 +142,6 @@ if (fullName.value == "") {
     passwordError.innerHTML = "Please password name can not be empty";
     passwordError.style =
       "color: red; font-size:11px; font-family:Arial, Helvetica, sans-serif;";
-    error++;
     return false;
   }
   // validating first name for minimum length
@@ -133,7 +150,6 @@ if (fullName.value == "") {
     passwordError.innerHTML = "Please the password name must be atleast 3 letters";
     passwordError.style =
       "color: red; font-size:11px; font-family:Arial, Helvetica, sans-serif;";
-    error++;
     return false;
   }
   // validating first name for maximum length
@@ -142,7 +158,6 @@ if (fullName.value == "") {
     passwordError.innerHTML = "Please the password  name must be less than 50 letters";
     passwordError.style =
       "color: red; font-size:11px; font-family:Arial, Helvetica, sans-serif;";
-    error++;
     return false;
   } else {
     password.style.border = "1px solid green";
@@ -154,7 +169,6 @@ if (fullName.value == "") {
     confirmPasswordError.innerHTML = "Please confirmPassword name can not be empty";
     confirmPasswordError.style =
       "color: red; font-size:11px; font-family:Arial, Helvetica, sans-serif;";
-    error++;
     return false;
   }
   else if (password.value !== confirmPassword.value) {
@@ -175,9 +189,7 @@ else{
 
 
 
-    if(error > 0){
-        event.preventDefault()
-    }
-}
+  
+};
 
 
