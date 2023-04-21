@@ -12,6 +12,7 @@ const config = require("./config/database");
 
 const aoRoute = require('./routes/aoDashboardRouts')
 const foRoute = require('./routes/foDashboard')
+const publicRoutes = require('./routes/public')
 
 const uploadRoute = require('./routes/upload')
 
@@ -74,6 +75,7 @@ app.use('/',aoAuthRoute )
 app.use('/',foRoute)
 app.use('/', foAuthRoute)
 app.use('/',uploadRoute)
+app.use('/',publicRoutes)
 
 app.get("*", (req,res)=>{
     res.status(404).send("page does not exist")

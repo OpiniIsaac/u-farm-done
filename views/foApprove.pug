@@ -1,27 +1,46 @@
 doctype html
 head
-  title Approve Produce
-  link(rel='stylesheet' href='css/foApprove.css')
+  title All Bookings and Orders
+  link(rel='stylesheet' href='css/registeredFarmerOne.css')
+  link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ' crossorigin='anonymous')
+
 header
-  h1 Approve Produce and Products
-main
-  
-   .card
-     if products.length 
-      each  product in products 
-          h2 #{product.fullName}
-          p
-            strong #{product.ward}:
-            |  Name of product
-          p
-            strong Product Description:
-            |  #{product.ward}       
-            strong Quantity:
-            |  #{product.quantity}
-          p
-            strong Price:
-            |  $20
-          //- img(src="#{product.productimage}", alt="") 
-          img(src=product.productimage, alt="image to be uploaded") 
-          button Approve
-      
+  h1 Registered Farmer Ones
+section
+  table
+    thead
+      tr
+        th Famer Name
+        th ward
+        th Date
+        th Unit Price
+        th Quantity 
+        th Devilery
+        th Produce Type
+        th Unique ID
+        th Activities
+        th Directions 
+        th Date Of Registration 
+        th Period Of Stay
+        th Action
+    tbody
+    if products.length
+      each product in products
+        tr
+          td #{product.fullName}
+          td #{product.ward}
+          td #{product.date}
+          td #{product.UnitPrice}
+          td #{product.quantity}
+          td #{product.payment}
+          td #{product.delivery}
+          td #{product.produceType}
+          td #{product.status}
+          td #{product.directions}
+          td #{product.dateOfRegistration}
+          td #{product.periodOfStay}
+          td 
+                      a.btn.btn-dark.btn-block(href="/edit_product/"+product.id) Edit 
+script(src='https://code.jquery.com/jquery-3.2.1.slim.min.js' integrity='sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN' crossorigin='anonymous')
+script(src='https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js' integrity='sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q' crossorigin='anonymous')
+script(src='https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js' integrity='sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl' crossorigin='anonymous')      
