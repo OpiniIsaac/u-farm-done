@@ -1,19 +1,17 @@
 doctype html
-head
-  title Ecommerce Card
-  link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
-  script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
-  script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
-.container
-  .row
-    .col-md-4
-      .card
-        if products.length 
-          each product in products
-                img.card-img-top(src=product.productimage, alt='Product 1')
-                .card-body
-                h5.card-title Product 1
-                p.card-text
-                    | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae risus id velit commodo pharetra.
-                a.btn.btn-primary(href='#') Add to Cart
-        
+html
+  head
+    title Ecommerce Card
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+  body
+    if products.length
+      each product in products
+        .card
+          img.card-img-top.card-img(img-fluid, src=product.productimage, alt='Product Image', style='max-width:250px;height:auto;')
+          .card-body
+            h5.card-title #{product.ward}
+            p.card-text Product Description
+            h6.card-subtitle.mb-2.text-muted Price: $9.99
+            a.btn.btn-primary(href="/products/" + product._id.toString()) Add to Cart
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')

@@ -1,0 +1,9 @@
+.bg-image {
+        background-image: url('../public/products/green-striped-ripe-watermelon-with-slice-cross-section-isolated-white-background-with-copy-space-text-images-special-kind-berry-sweet-pink-flesh-with-black-seeds-side-view.jpg');
+        background-position:center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 100vh;
+      }
+
+     

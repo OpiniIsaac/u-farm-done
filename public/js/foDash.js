@@ -18,13 +18,4 @@ function showPage(pageName) {
             break;
     }
 
-    // Update active class on sidebar items
-    var sidebarItems = document.getElementsByClassName("sidebar-item");
-    for (var i = 0; i < sidebarItems.length; i++) {
-        if (sidebarItems[i].innerHTML.toLowerCase().indexOf(pageName.toLowerCase()) > -1) {
-            sidebarItems[i].classList.add("active");
-        } else {
-            sidebarItems[i].classList.remove("active");
-        }
-    }
 }

@@ -2,6 +2,7 @@ const mongoose = require ('mongoose')
 
 
 const UploadScheme = new mongoose.Schema({
+   
    fullName:{
         type:String,
         trim:true
@@ -19,7 +20,7 @@ const UploadScheme = new mongoose.Schema({
         type:String,
         trim:true
     },
-   UnitPrice:{
+   unitPrice:{
         type:String,
         trim:true
     },

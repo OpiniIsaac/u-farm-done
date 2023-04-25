@@ -56,6 +56,7 @@ router.post('/registerUrbanFamer',async(req,res)=>{
   router.get("/edit_product/:id", async(req,res)=>{
     try{
         const item= await UploadProducts.findOne({_id:req.params.id});
+        console.log(item)
         res.render("productApproval", {product:item});
     }
     catch(err){

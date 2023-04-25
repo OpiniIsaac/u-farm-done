@@ -1,0 +1,42 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Product Page
+  // Bootstrap CSS
+  link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css')
+  // Custom CSS
+  style.
+    body {
+    background-color: #f8f9fa;
+    }
+    .card {
+    margin-top: 50px;
+    }
+    .card-img-top {
+    height: 300px;
+    object-fit: cover;
+    }
+.container
+  .row
+    .col-md-8.mx-auto
+      .card
+        img.card-img-top(src=product.productimage, alt='Product Image')
+        .card-body
+          h5.card-title #{product.ward}
+          p.card-text $19.99
+          hr
+          h6 Contact the Seller:
+          form(action='#' method='post')
+            .form-group
+              label(for='name') Name:
+              input#name.form-control(type='text' name='name' placeholder='Enter your name' required='')
+            .form-group
+              label(for='email') Email:
+              input#email.form-control(type='email' name='email' placeholder='Enter your email' required='')
+            .form-group
+              label(for='message') Message:
+              textarea#message.form-control(name='message' rows='3' placeholder='Enter your message' required='')
+            button.btn.btn-primary(type='submit') Send Message
+// Bootstrap JS
+script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js')
