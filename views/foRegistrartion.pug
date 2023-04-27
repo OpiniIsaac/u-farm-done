@@ -37,10 +37,10 @@ form#regForm(name='register' action ='/registerUrbanFamer' method ='post'
     br
     label(for='residenceType') Residence Type:
       select#residenceType(name='residenceType' type='text')
-        option(value='') --Select--
-        option(value='Own'  ) Own
-        option(value='Rent' ) Rent
-        option(value='Other' ) Other
+        option(value='' name='residenceType' ) --Select--
+        option(value='Own' name='residenceType'   ) Own
+        option(value='Rent' name='residenceType'  ) Rent
+        option(value='Other' name='residenceType'  ) Other
     small#residenceTypeError
     br
   fieldset

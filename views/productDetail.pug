@@ -23,8 +23,17 @@ head
       .card
         img.card-img-top(src=product.productimage, alt='Product Image')
         .card-body
-          h5.card-title #{product.ward}
-          p.card-text $19.99
+          h5.card-title #{product.name}
+          h5.card-title   UGX #{product.unitPrice}
+          h6.card-text Call Me
+          p.card-text #{product.phoneNumber}
+          h6.card-text Method Of Delivery
+          p.card-text #{product.delivery}
+          h6.card-title Method Of Payment
+ 
+          p.card-text #{product.payment}
+          h6.card-title Type of Produce 
+          p.card-text #{product.produceType}
           hr
           h6 Contact the Seller:
           form(action='#' method='post')

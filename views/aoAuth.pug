@@ -2,6 +2,8 @@ doctype html
 head
   title Create FO Authentication Details
   link(rel='stylesheet' href='css/aoAuth.css')
+  link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css')
+
 header
   h1 Create Farmer One Authentication Details
 main
@@ -12,14 +14,16 @@ main
       input#fullName(type='text' name='fullName' placeholder='Enter your full name')
       small#fullNameError
    
-      label(for='ward') Ward Represented:
-        select#ward(name='ward' type='text')
-          option(value='') --Select--
-          option(value='Ward A' name='ward' ) Ward A
-          option(value='Ward b' name='ward' ) Ward B
-          option(value='Ward c' name='ward') Ward C
-          option(value='Ward D' name='ward') Ward D
+      label(for='ward') Ward:
+      select(type="text" name='ward')#ward.form-control
+        option(value="Ward A" name='ward') Ward A
+        option(value="Ward B" name='ward') Ward B
+        option(value="Ward C" name='ward') Ward C
+        option(value="Ward D" name='ward') Ward D
       small#wardError
+      label(for='uniqueId') Unique ID:
+      input#uniqueId(type='text' name='uniqueId' placeholder='Enter your uniqueId')
+      small#uniqueIdError
     fieldset
       legend Authentication Details
       label(for='username') Username:
@@ -29,7 +33,7 @@ main
       input#password(type='password' name='password' placeholder='Enter your password')
       small#passwordError
       label(for='confirmPassword') Confirm Password:
-      input#confirmPassword(type='password' name='confirmPassword' placeholder='Enter confirm password')
+      input#confirmPassword(type='password'  placeholder='Enter confirm password')
       small#confirmPasswordError
     button(type='submit') Create Authentication Details
 script(src='js/aoAuth.js')

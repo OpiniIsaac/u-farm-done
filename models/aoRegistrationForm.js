@@ -22,10 +22,12 @@ const aoRegister = new mongoose.Schema({
         type:String,
         trim:true
     },
+
     residenceType:{
         type:String,
         trim:true
     },
+    
     ward:{
         type:String,
         trim:true

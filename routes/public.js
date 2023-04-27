@@ -10,7 +10,7 @@ router.get('/public', async(req, res)=> {
     try{
       const data = await UploadProducts.find()
       console.log(data)
-      const approvedProducts = data.filter(product => product.status === 'approved');
+      const approvedProducts = data.filter(product => product.status === 'Approve');
     
       res.render('public',{products:approvedProducts});
     }catch(err){

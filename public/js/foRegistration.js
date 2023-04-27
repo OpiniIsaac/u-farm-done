@@ -25,7 +25,7 @@ const Validate = () => {
 
   let genderError = document.getElementById("genderError");
   let dateOfBirthError = document.getElementById("dateOfBirthError");
-  let residenceTypeError = document.getElementById("residenceType");
+  let residenceTypeError = document.getElementById("residenceTypeError");
 
   let wardError = document.getElementById("wardError");
   let uniqueIdError = document.getElementById("uniqueIdError");
@@ -129,47 +129,36 @@ const Validate = () => {
     
     return false;
   } else {
-    phoneNumber.style.border = "1px solid green";
 
     genderError.innerHTML = "";
   }
 
-  if (dateOfBirth.value == "") {
-    dateOfBirthError.innerHTML = "please enter date of birth";
+
+ 
+  const dob = new Date(dateOfBirth.value);
+
+  // Calculate the age in years
+  const ageInYears = (Date.now() - dob.getTime()) / (1000 * 60 * 60 * 24 * 365);
+   // Check if the user is at least 10 years old
+  if (ageInYears < 10) {
+      dateOfBirthError.innerHTML = "You must be at least 10 years old to proceed.";
     dateOfBirthError.style =
       "color: red; font-size:11px; font-family:Arial, Helvetica, sans-serif;";
     return false;
-  } else {
+  }
+  else {
     dateOfBirthError.innerHTML = "";
   }
-
   
   if (residenceType.value == "") {
-    residenceType.style.border = "1px solid red";
     residenceTypeError.innerHTML = "Please residenceType name can not be empty";
     residenceTypeError.style =
       "color: red; font-size:11px; font-family:Arial, Helvetica, sans-serif;";
     
     return false;
   }
-  // validating first name for minimum length
-  else if (residenceType.value.length < 3) {
-    residenceType.style.border = "1px solid red";
-    residenceTypeError.innerHTML = "Please the residenceType name must be atleast 3 letters";
-    residenceTypeError.style =
-      "color: red; font-size:11px; font-family:Arial, Helvetica, sans-serif;";
-    
-    return false;
-  }
-  // validating first name for maximum length
-  else if (residenceType.value.length > 50) {
-    residenceType.style.border = "1px solid red";
-    residenceTypeError.innerHTML = "Please the residenceType  name must be less than 50 letters";
-    residenceTypeError.style =
-      "color: red; font-size:11px; font-family:Arial, Helvetica, sans-serif;";
-    
-    return false;
-  } else {
+
+  else {
     residenceType.style.border = "1px solid green";
     residenceTypeError.innerHTML = "";
   }
@@ -182,24 +171,7 @@ const Validate = () => {
     
     return false;
   }
-  // validating first name for minimum length
-  else if (ward.value.length < 3) {
-    ward.style.border = "1px solid red";
-    wardError.innerHTML = "Please the ward name must be atleast 3 letters";
-    wardError.style =
-      "color: red; font-size:11px; font-family:Arial, Helvetica, sans-serif;";
-    
-    return false;
-  }
-  // validating first name for maximum length
-  else if (ward.value.length > 50) {
-    ward.style.border = "1px solid red";
-    wardError.innerHTML = "Please the ward  name must be less than 50 letters";
-    wardError.style =
-      "color: red; font-size:11px; font-family:Arial, Helvetica, sans-serif;";
-    
-    return false;
-  } else {
+ else {
     ward.style.border = "1px solid green";
     wardError.innerHTML = "";
   }

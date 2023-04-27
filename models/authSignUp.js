@@ -9,6 +9,11 @@ const authSignUp = mongoose.Schema({
         type:String,
         trim:true,
     },
+    ward:{
+        type:String,
+        trim:true,
+    },
+
     role:{
         type: String,
         default: 'FO'

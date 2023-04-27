@@ -26,7 +26,7 @@ const Validate = () => {
 
   let genderError = document.getElementById("genderError");
   let dateOfBirthError = document.getElementById("dateOfBirthError");
-  let residenceTypeError = document.getElementById("residenceType");
+  let residenceTypeError = document.getElementById("residenceTypeError");
 
   let wardError = document.getElementById("wardError");
   let uniqueIdError = document.getElementById("uniqueIdError");
@@ -135,16 +135,23 @@ const Validate = () => {
     genderError.innerHTML = "";
   }
 
-  if (dateOfBirth.value == "") {
-    dateOfBirthError.innerHTML = "please enter date of birth";
+ 
+ 
+ 
+  const dob = new Date(dateOfBirth.value);
+
+  // Calculate the age in years
+  const ageInYears = (Date.now() - dob.getTime()) / (1000 * 60 * 60 * 24 * 365);
+   // Check if the user is at least 10 years old
+  if (ageInYears < 10) {
+      dateOfBirthError.innerHTML = "You must be at least 10 years old to proceed.";
     dateOfBirthError.style =
       "color: red; font-size:11px; font-family:Arial, Helvetica, sans-serif;";
     return false;
-  } else {
+  }
+  else {
     dateOfBirthError.innerHTML = "";
   }
-
-  
   if (residenceType.value == "") {
     residenceType.style.border = "1px solid red";
     residenceTypeError.innerHTML = "Please residenceType name can not be empty";
@@ -260,7 +267,7 @@ const Validate = () => {
     dateOfRegistrationError.innerHTML = "";
   }
 
-  if (periodOfStay.value <= 10) {
+  if (periodOfStay > 10) {
     periodOfStayError.innerHTML =
       "the farmer should have stayed here for more than 10years";
     periodOfStayError.style =

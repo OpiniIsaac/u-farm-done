@@ -3,6 +3,7 @@ head
   title Create FO Authentication Details
   link(rel='stylesheet' href='css/aoAuth.css')
   link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC' crossorigin='anonymous')
+  link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css')
 
 header
   h1 Create FO Authentication Details
@@ -17,13 +18,14 @@ main
       input#uniqueId(type='text' name='uniqueId' placeholder='Enter your Unique ID')
       small#fullNameError
      
-      label(for='ward') Ward:
-       select#ward.form-select(name='ward')
-          option(selected='' name='ward') select wards 
-          option(value='Ward A' name='ward') Ward A
-          option(value='Ward B' name='ward') Ward B
-          option(value='ward C' name='ward') ward C
-          option(value='ward D' name='ward') ward D
+      
+       .form-group
+              label(for='status') Ward:
+              select(type="text")#ward.form-control(name='ward')
+               option(value="Ward A" name='ward') Ward A
+               option(value="Ward B" name='ward') Ward B
+               option(value="Ward C" name='ward') Ward C
+               option(value="Ward D" name='ward') Ward D
       small#wardError
     
     fieldset
