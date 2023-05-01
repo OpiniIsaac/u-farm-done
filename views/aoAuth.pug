@@ -1,39 +1,45 @@
 doctype html
 head
   title Create FO Authentication Details
-  link(rel='stylesheet' href='css/aoAuth.css')
   link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css')
-
+  link(rel='stylesheet' href='css/aoAuth.css')
 header
   h1 Create Farmer One Authentication Details
 main
-  form#regForm(name='register' onsubmit='return Validate();'  method = 'POST' action = '/signup' )
+  form#regForm(name='register' onsubmit='return Validate();' method='POST' action='/signup')
     fieldset
       legend FO Information
-      label(for='fullName') Full Name:
-      input#fullName(type='text' name='fullName' placeholder='Enter your full name')
-      small#fullNameError
-   
-      label(for='ward') Ward:
-      select(type="text" name='ward')#ward.form-control
-        option(value="Ward A" name='ward') Ward A
-        option(value="Ward B" name='ward') Ward B
-        option(value="Ward C" name='ward') Ward C
-        option(value="Ward D" name='ward') Ward D
-      small#wardError
-      label(for='uniqueId') Unique ID:
-      input#uniqueId(type='text' name='uniqueId' placeholder='Enter your uniqueId')
-      small#uniqueIdError
+      .form-group
+        label(for='fullName') Full Name:
+        input#fullName.form-control(type='text' name='fullName' placeholder='Enter your full name')
+        small#fullNameError.form-text.text-danger
+      .form-group
+        label(for='ward') Ward:
+        select#ward.form-control(name='ward')
+          option(value='' name='ward') --select--
+          option(value='Ward A' name='ward') Ward A
+          option(value='Ward B' name='ward') Ward B
+          option(value='Ward C' name='ward') Ward C
+          option(value='Ward D' name='ward') Ward D
+        small#wardError.form-text.text-danger
+      .form-group
+        label(for='uniqueId') Unique ID:
+        input#uniqueId.form-control(type='text' name='uniqueId' placeholder='Enter your uniqueId')
+        small#uniqueIdError.form-text.text-danger
     fieldset
       legend Authentication Details
-      label(for='username') Username:
-      input#username(type='text' name='username' placeholder='Enter your username')
-      small#usernameError
-      label(for='password') Password:
-      input#password(type='password' name='password' placeholder='Enter your password')
-      small#passwordError
-      label(for='confirmPassword') Confirm Password:
-      input#confirmPassword(type='password'  placeholder='Enter confirm password')
-      small#confirmPasswordError
-    button(type='submit') Create Authentication Details
+      .form-group
+        label(for='username') Username:
+        input#username.form-control(type='text' name='username' placeholder='Enter your username')
+        small#usernameError.form-text.text-danger
+        input(type="hidden" value='fo' name='role' )
+      .form-group
+        label(for='password') Password:
+        input#password.form-control(type='password' name='password' placeholder='Enter your password')
+        small#passwordError.form-text.text-danger
+      .form-group
+        label(for='confirmPassword') Confirm Password:
+        input#confirmPassword.form-control(type='password' name='confirmPassword' placeholder='Enter confirm password')
+        small#confirmPasswordError.form-text.text-danger
+    button.btn.btn-success(type='submit') Create Authentication Details
 script(src='js/aoAuth.js')

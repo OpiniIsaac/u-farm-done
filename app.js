@@ -18,10 +18,10 @@ const uploadRoute = require('./routes/upload')
 
 const aoAuthRoute = require('./routes/aoAuth')
 const foAuthRoute = require('./routes/foAuthRute')
+const loginRoute = require('./routes/logInRoute')
 
 
-const authSignUp = require('./models/authSignUp')
-
+const User = require("./models/user")
 
 
 
@@ -35,9 +35,10 @@ app.use(session({
 // * Passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
-passport.use(authSignUp.createStrategy());
-passport.serializeUser(authSignUp.serializeUser());
-passport.deserializeUser(authSignUp.deserializeUser());
+passport.use(User.createStrategy());
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
 
 
 // malter middlware 
@@ -76,7 +77,11 @@ app.use('/',foRoute)
 app.use('/', foAuthRoute)
 app.use('/',uploadRoute)
 app.use('/',publicRoutes)
+app.use('/',loginRoute)
 
+
+
+// 404 error
 app.get("*", (req,res)=>{
     res.status(404).send("page does not exist")
 })

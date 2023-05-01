@@ -1,19 +1,19 @@
 const express = require('express');
 const app = express();
 
-const  FoSignUp = require('../models/foSignUp');
+const User = require('../models/user');
 const router = require('./aoDashboardRouts');
 
 router.post("/foSignup", async(req,res)=>{
     console.log(req.body)
     try{
-        const user = new FoSignUp(req.body);
-        let userName = await FoSignUp.findOne({username:req.body.username})
+        const user = new User (req.body);
+        let userName = await User.findOne({username:req.body.username})
         if(userName){
             return res.send("this unique id already exists")
         }
         else{
-            await FoSignUp.register(user,req.body.password,(error)=>{
+            await User.register(user,req.body.password,(error)=>{
                 if(error){
                     throw error
                 }

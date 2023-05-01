@@ -1,0 +1,38 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Document
+    link(rel="stylesheet", href="css/login.css")
+    link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css' integrity='sha512-w36G2bj6Ufj6Uk9Zz10pj6UvOQy1mMFnwLG/ihxmqLhN6zKj6o/lU6iN/E6Nsi1InqwvfC06DzmKyxmPTLmrCA==' crossorigin='anonymous' referrerpolicy='no-referrer')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/js/bootstrap.bundle.min.js' integrity='sha512-Y9sWJijvHLKj7LvheG+kfch8W7oNShwTc+7T/1IY/1s+yk/63j+M82IzNrmJ3PmOtFwAxQ2l/eLYjKrDz8V7gg==' crossorigin='anonymous' referrerpolicy='no-referrer')
+    script(src="js/login.js") 
+
+  body 
+    .form-modal
+      .form-toggle
+        button#login-toggle(onclick='toggleLogin()') log in
+        button#signup-toggle(onclick='toggleSignup()') sign up
+      #login-form
+        form(name="login" action='/login' method='post')
+          input(name='username' type='text', placeholder='Enter email or username' )
+          input(name='password' type='password', placeholder='Enter password' )
+          div.mb-3
+           
+          //-   select#role.form-select(name='role')
+          //-     option(value='' name='role') --Log In As--
+          //-     option(value='ao' name='role') Agricultural Officer
+          //-     option(value='uf' name='role') Urban Farmer
+          //-     option(value='fo' name='role') Farmer One
+          //-     option(value='gp' name='role') General Public  
+          button.btn.login(type='submit') login
+        
+         
+      #signup-form
+        form
+          input(name='email' type='email', placeholder='Enter your email')
+          input( name='username' type='text', placeholder='Choose username')
+          input(name='password' type='password', placeholder='Create password')
+          button.btn.signup(type='submit') create account

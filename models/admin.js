@@ -5,18 +5,9 @@ const authSignUp = mongoose.Schema({
         type:String,
         trim:true,
     },
-    uniqueId:{
-        type:String,
-        trim:true,
-    },
-    ward:{
-        type:String,
-        trim:true,
-    },
-
     role:{
         type: String,
-        default: 'fo'
+        default: 'ao'
     },
     password:{
         type:String,
@@ -25,4 +16,4 @@ const authSignUp = mongoose.Schema({
 })
 
 authSignUp.plugin(passportLocalMongoose,);
-module.exports = mongoose.model('AoSignUp',authSignUp);
+module.exports = mongoose.model('Admin',authSignUp);

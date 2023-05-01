@@ -1,9 +1,9 @@
 const mongoose = require ('mongoose')
 
-
+ 
 const UploadScheme = new mongoose.Schema({
    
-   fullName:{
+    productName:{
         type:String,
         trim:true
     },
@@ -48,6 +48,11 @@ const UploadScheme = new mongoose.Schema({
         type:String,
         default:'pending'
     },
+    user: {
+           type: mongoose.Schema.Types.ObjectId,
+            ref: 'User',
+            required: false,
+          },
 
 })
 

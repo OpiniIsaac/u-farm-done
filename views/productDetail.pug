@@ -3,49 +3,61 @@ head
   meta(charset='UTF-8')
   meta(name='viewport' content='width=device-width, initial-scale=1.0')
   title Product Page
-  // Bootstrap CSS
-  link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css')
-  // Custom CSS
-  style.
-    body {
-    background-color: #f8f9fa;
-    }
-    .card {
-    margin-top: 50px;
-    }
-    .card-img-top {
-    height: 300px;
-    object-fit: cover;
-    }
-.container
+  link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css')
+  script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js')
+  script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js')
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css')
+
+.container.my-4
   .row
-    .col-md-8.mx-auto
-      .card
-        img.card-img-top(src=product.productimage, alt='Product Image')
-        .card-body
-          h5.card-title #{product.name}
-          h5.card-title   UGX #{product.unitPrice}
-          h6.card-text Call Me
-          p.card-text #{product.phoneNumber}
-          h6.card-text Method Of Delivery
-          p.card-text #{product.delivery}
-          h6.card-title Method Of Payment
+    .col-md-6
+      img.img-fluid(src=product.productimage,alt='Product Image')
+    .col-md-6
+      h1 #{product.productName}
+      p
+        i.fas.fa-dollar-sign
+        strong Price:
+        |  UGX #{product.unitPrice}
+      p
+        i.fas.fa-phone
+        strong Phone Number:
+        | #{product.phoneNumber}
+      p
+        i.fas.fa-map-marker-alt
+        strong Shop Address:
+        |   #{product.directions}
+      p
+        i.fas.fa-tags
+        strong Type of Product:
+        |  #{product.produceType}
+      p
+        i.fas.fa-truck
+        strong Method of Delivery:
+        |   #{product.delivery}
+      a.btn.btn-success.mt-4(href='#' data-toggle='modal' data-target='#contactModal')
+        i.fas.fa-envelope
+        |  Contact Seller
  
-          p.card-text #{product.payment}
-          h6.card-title Type of Produce 
-          p.card-text #{product.produceType}
-          hr
-          h6 Contact the Seller:
-          form(action='#' method='post')
-            .form-group
-              label(for='name') Name:
-              input#name.form-control(type='text' name='name' placeholder='Enter your name' required='')
-            .form-group
-              label(for='email') Email:
-              input#email.form-control(type='email' name='email' placeholder='Enter your email' required='')
-            .form-group
-              label(for='message') Message:
-              textarea#message.form-control(name='message' rows='3' placeholder='Enter your message' required='')
-            button.btn.btn-primary(type='submit') Send Message
-// Bootstrap JS
-script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js')
+// Contact Modal
+#contactModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='contactModalLabel' aria-hidden='true')
+  .modal-dialog(role='document')
+    .modal-content
+      .modal-header
+      .modal-body
+        form(name='register' action=`/products/${product._id}/messages` method='post' onsubmit='return Validate();')
+
+          .form-group
+            label(for='name') Name
+            input#name.form-control(type='text' placeholder='Enter your name' name='content' )
+          .form-group
+            label(for='email') Email address
+            input#email.form-control(type='text' placeholder='Enter your email'  name='content')
+          .form-group
+            label(for='message') Message
+            textarea#message.form-control(rows='5' name='content')
+            button.btn.btn-secondary(type='button' data-dismiss='modal')
+             | Close
+             button.btn.btn-success(type='submit') Send Message
+          
+     

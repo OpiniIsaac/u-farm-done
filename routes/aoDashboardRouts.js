@@ -1,7 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const AoRegister = require('../models/aoRegistrationForm')
-router.get('/aoDasboard', (req, res)=> {
+const User = require('../models/user')
+
+
+const connectEnsureLogin = require("connect-ensure-login")
+
+
+router.get('/aoDasboard',connectEnsureLogin.ensureLoggedIn(),(req, res)=> {
   res.render('aoDash');
 });
 router.get('/aoRegistration', (req, res)=> {

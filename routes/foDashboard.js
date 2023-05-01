@@ -4,8 +4,9 @@ const router = express.Router();
 const FoRegister = require('../models/foRegistrationForm')
 
 const UploadProducts = require('../models/upload')
+const connectEnsureLogin = require("connect-ensure-login")
 
-router.get('/foDasboard', (req, res)=> {
+router.get('/foDasboard',connectEnsureLogin.ensureLoggedIn(), (req, res)=> {
   res.render('foDash');
 });
 

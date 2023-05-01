@@ -6,22 +6,28 @@ head
   // Bootstrap CSS
   link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css')
   link(rel="stylesheet", href="../public/css/upload.css")
+  
 
 .container
   .bg-image.d-flex.align-items-center
-    form(name='register' action ='/uploadProducts' method ='post' enctype="multipart/form-data")
+    form(name='register' onsubmit='return Validate();' action ='/uploadProducts' method ='post' enctype="multipart/form-data")
       .form-group
-        label(for='fullName') Name:
-        input#fullName.form-control(type='text' name='fullName')
-        small#fullNameError
+        label(for='productName') Product  Name:
+        input#productName.form-control(type='text' name='productName')
+        small#productNameError
       .form-group
         label(for='productimage') Upload Image :
         input#productimage.form-control(type='file' name='productimage')
         small#productimageError 
       .form-group
-        label(for='ward') Ward Name:
-        input#ward.form-control(type='text' name='ward')
-        small#wardError
+        label(for='ward') Ward:
+        select#ward.form-control(name='ward')
+          option(value='' name='ward') --select--
+          option(value='Ward A' name='ward') Ward A
+          option(value='Ward B' name='ward') Ward B
+          option(value='Ward C' name='ward') Ward C
+          option(value='Ward D' name='ward') Ward D
+        small#wardError.form-text.text-danger
       .form-group
         label(for='date') Date:
         input#date.form-control(type='date' name='date')
@@ -45,6 +51,10 @@ head
         textarea#directions.form-control(name='directions')
         small#directions
       .form-group
+        label(for='phoneNumber') Phone Number:
+        input#phoneNumber.form-control(name='phoneNumber')
+        small#phoneNumber
+      .form-group
         label(for='delivery') Mode of Delivery:
         select#delivery.form-control(name='delivery' )
           option(value='pick_up' name='delivery') Pick Up
@@ -59,4 +69,5 @@ head
       button.btn.btn-success(type='submit') Upload
       button.btn.btn-secondary(type='reset') Reset
   // Bootstrap JS
+  
   script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js')

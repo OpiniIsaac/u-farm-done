@@ -11,7 +11,7 @@ const famerOneScheme = mongoose.Schema({
     },
     role:{
         type: String,
-        default: 'FO'
+        default: 'uf'
     },
     password:{
         type:String,

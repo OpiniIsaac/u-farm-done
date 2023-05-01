@@ -5,26 +5,55 @@ const multer = require("multer")
 
 const UploadProducts = require('../models/upload')
 
-router.get('/uploadPage',(req,res)=>{
-    res.render('upload')
-})
+// Define the storage for uploaded files
 let storage = multer.diskStorage({
-    destination:(req,file,cb)=>{cb(null,"public/products")}, 
-    filename:(req,file,cb)=>{cb(null,file.originalname)}})
-let imageupload = multer({storage:storage})  // 
-router.post('/uploadProducts',imageupload.single('productimage'),(req,res)=>{
-    try{
-        const products = new UploadProducts(req.body)
-products.productimage= req.file.originalname  //alter and change the name of the product
-      products.save()     
-         res.redirect('/uploadPage')
-    }
-    catch(err){
-        console.log(err)
-        res.send("upload failed ${error}")
+    destination:(req,file,cb)=>{cb(null,"public/products")},
+    filename:(req,file,cb)=>{cb(null,file.originalname)}
+});
 
-    }
-})
+// Set up the multer middleware to handle the file upload
+let imageupload = multer({storage:storage}).single('productimage');
 
-module.exports = router
+// Route for rendering the upload page
+router.get('/uploadPage', connectEnsureLogin.ensureLoggedIn(), (req, res) => {
+    res.render('upload');
+});
 
+// Route for handling the product upload
+router.post('/uploadProducts', connectEnsureLogin.ensureLoggedIn(), (req, res) => {
+    // Handle the file upload using the multer middleware
+    imageupload(req, res, function(err) {
+        if (err) {
+            console.log(err);
+            return res.send("Error uploading file.");
+        }
+
+        // Create a new product object with the user and file information
+        const product = new UploadProducts({
+            productName: req.body.productName,
+            ward: req.body.ward,
+            productimage: req.file.originalname,
+            date: req.body.date,
+            unitPrice: req.body.unitPrice,
+            quantity: req.body.quantity,
+            payment: req.body.payment,
+            directions: req.body.directions,
+            delivery: req.body.delivery,
+            produceType: req.body.produceType,
+            user: req.user.user // Assuming that req.user has a valid user field
+        });
+
+        // Save the product to the database
+        product.save(function(err) {
+            if (err) {
+                console.log(err);
+                return res.send("Error saving product.");
+            }
+
+            // Redirect back to the upload page
+            res.redirect('/uploadPage');
+        });
+    });
+});
+
+module.exports = router;
