@@ -6,7 +6,7 @@ head
   // Bootstrap CSS
   link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css')
   link(rel="stylesheet", href="../public/css/upload.css")
-  
+  script(src="js/upload.js") 
 
 .container
   .bg-image.d-flex.align-items-center
@@ -49,7 +49,7 @@ head
       .form-group
         label(for='directions') Directions:
         textarea#directions.form-control(name='directions')
-        small#directions
+        small#directionsError
       .form-group
         label(for='phoneNumber') Phone Number:
         input#phoneNumber.form-control(name='phoneNumber')
@@ -65,7 +65,7 @@ head
         select#produceType.form-control(name='produceType' )
           option(value='organic' name='produceType') Organic
           option(value='non_organic' name='produceType') Non-Organic
-        small#produceType
+        small#produceTypeError
       button.btn.btn-success(type='submit') Upload
       button.btn.btn-secondary(type='reset') Reset
   // Bootstrap JS

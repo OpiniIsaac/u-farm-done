@@ -1,9 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const connectEnsureLogin = require("connect-ensure-login")
 const multer = require("multer")
-
+const connectEnsureLogin = require("connect-ensure-login")
 const UploadProducts = require('../models/upload')
+
+router.get('/ufDash',connectEnsureLogin.ensureLoggedIn(),(req,res)=>{
+    res.render('ufDash')
+})
+
+
 
 // Define the storage for uploaded files
 let storage = multer.diskStorage({
@@ -15,12 +20,12 @@ let storage = multer.diskStorage({
 let imageupload = multer({storage:storage}).single('productimage');
 
 // Route for rendering the upload page
-router.get('/uploadPage', connectEnsureLogin.ensureLoggedIn(), (req, res) => {
+router.get('/upload', (req, res) => {
     res.render('upload');
 });
 
 // Route for handling the product upload
-router.post('/uploadProducts', connectEnsureLogin.ensureLoggedIn(), (req, res) => {
+router.post('/uploadProducts', (req, res) => {
     // Handle the file upload using the multer middleware
     imageupload(req, res, function(err) {
         if (err) {
@@ -55,5 +60,6 @@ router.post('/uploadProducts', connectEnsureLogin.ensureLoggedIn(), (req, res) =
         });
     });
 });
+
 
 module.exports = router;

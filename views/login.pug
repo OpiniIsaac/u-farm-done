@@ -16,23 +16,21 @@ html(lang="en")
         button#login-toggle(onclick='toggleLogin()') log in
         button#signup-toggle(onclick='toggleSignup()') sign up
       #login-form
-        form(name="login" action='/login' method='post')
-          input(name='username' type='text', placeholder='Enter email or username' )
-          input(name='password' type='password', placeholder='Enter password' )
+        form(name="login" action='/login' method='post' onsubmit='return  Validate ();')
+          input#username(name='username' type='text', placeholder='Enter email or username' )
+          small#usernameError
+          input#password(name='password' type='password', placeholder='Enter password' )
           div.mb-3
-           
-          //-   select#role.form-select(name='role')
-          //-     option(value='' name='role') --Log In As--
-          //-     option(value='ao' name='role') Agricultural Officer
-          //-     option(value='uf' name='role') Urban Farmer
-          //-     option(value='fo' name='role') Farmer One
-          //-     option(value='gp' name='role') General Public  
+          small#passwordError 
+         
           button.btn.login(type='submit') login
         
          
       #signup-form
-        form
+        form(name='register' onsubmit='return validateSignup();' method='POST' action='/signupGeneral')
           input(name='email' type='email', placeholder='Enter your email')
-          input( name='username' type='text', placeholder='Choose username')
+          input(type="hidden" value='gp'  name= 'role')
+          input#usernameSignUp( name='username' type='text', placeholder='Choose username')
+          small#usernameSignUpError
           input(name='password' type='password', placeholder='Create password')
           button.btn.signup(type='submit') create account

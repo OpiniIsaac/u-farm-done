@@ -16,6 +16,7 @@ const publicRoutes = require('./routes/public')
 
 const uploadRoute = require('./routes/upload')
 
+
 const aoAuthRoute = require('./routes/aoAuth')
 const foAuthRoute = require('./routes/foAuthRute')
 const loginRoute = require('./routes/logInRoute')
@@ -78,7 +79,6 @@ app.use('/', foAuthRoute)
 app.use('/',uploadRoute)
 app.use('/',publicRoutes)
 app.use('/',loginRoute)
-
 
 
 // 404 error

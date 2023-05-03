@@ -19,7 +19,7 @@ router.post("/login", passport.authenticate("local", {failureRedirect: "/login"}
         res.redirect("/aoDasboard")
     }
     else if(req.user.role== "uf" && userExist){
-        res.redirect("/uploadPage")
+        res.redirect("/ufDash")
     }
     else if(req.user.role== "fo" && userExist){
         res.redirect("/foDasboard")

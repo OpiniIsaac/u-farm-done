@@ -6,37 +6,40 @@ const Validate = () => {
     let phoneNumber = document.getElementById("phoneNumber");
    
   
-    let dateOfBirth = document.getElementById("dateOfBirth");
+    let date = document.getElementById("date");
     let residenceType = document.getElementById("residenceType");
   
     let ward = document.getElementById("ward");
   
-    let uniqueId = document.getElementById("uniqueId");
+    let unitPrice = document.getElementById("unitPrice");
   
-    let activities = document.getElementById("activities");
+    let quantity = document.getElementById("quantity");
+    let payment = document.getElementById("payment");
     let directions = document.getElementById("directions");
-    let dateOfRegistration = document.getElementById("dateOfRegistration");
   
-    let periodOfStay = document.getElementById("periodOfStay");
+    let delivery = document.getElementById("delivery");
+    
+    let produceType= document.getElementById("produceType");
+
     // pick error sections
     let productNameError = document.getElementById("productNameError");
-    let ninError = document.getElementById("ninError");
+    let productimageError = document.getElementById("productimageError");
     let phoneNumberError = document.getElementById("phoneNumberError");
   
-    let genderError = document.getElementById("genderError");
-    let dateOfBirthError = document.getElementById("dateOfBirthError");
-    let residenceTypeError = document.getElementById("residenceTypeError");
+    // let wardError = document.getElementById("wardError");
+    // let date = document.getElementById("date");
+    let unitPriceError = document.getElementById("unitPriceError");
   
     let wardError = document.getElementById("wardError");
-    let uniqueIdError = document.getElementById("uniqueIdError");
+    let quantityError = document.getElementById("quantityError");
   
-    let activitiesError = document.getElementById("activitiesError");
+    let paymentError = document.getElementById("paymentError");
     let directionsError = document.getElementById("directionsError");
-    let dateOfRegistrationError = document.getElementById(
-      "dateOfregistrationError"
+    let deliveryError = document.getElementById(
+      "deliveryError"
     );
   
-    let periodOfStayError = document.getElementById("periodOfStayError");
+    let produceTypeError = document.getElementById("produceTypeError");
   
     // validating first name input emptiness
     if (productName.value == "") {

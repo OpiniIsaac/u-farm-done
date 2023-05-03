@@ -8,4 +8,7 @@ head
   .sidebar-item(onclick="showPage('foApprove')") Products Approval
   .sidebar-item(onclick="showPage('appiontNewFO')") Appoint New FO
   .sidebar-item(onclick="showPage('foAuth')") Urban Farmer Authentication
-iframe#page-content(src='foRegistrartion')
+  .sidebar-item
+    form(method="post", action="/logout")
+                        button.btn.btn-danger(type="submit") logout
+iframe#page-content(src='upload')

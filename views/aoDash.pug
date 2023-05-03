@@ -2,10 +2,15 @@ doctype html
 head
   title Agricultural Officer Dashboard
   link(rel='stylesheet' href='css/aoDash.css')
+  link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css')
+
 #sidebar
   .sidebar-item(onclick="showPage('aoRegistration')") FO Registration
   .sidebar-item(onclick="showPage('registeredFarmerOne')") Registered FO
   .sidebar-item(onclick="showPage('appiontNewFO')") Appoint New FO
   .sidebar-item(onclick="showPage('aoAuth')") FO Authentication
+  .sidebar-item
+   form(method="post", action="/logout")
+                        button.btn.btn-danger(type="submit") logout
 iframe#page-content(src='aoRegistration')
 script(src="/js/aoDash.js") 
